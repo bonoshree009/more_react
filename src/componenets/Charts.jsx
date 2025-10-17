@@ -27,6 +27,8 @@ const Charts = () => {
   <Bar dataKey="chemistry" stackId="a" fill="green" activeBar={{ stroke: 'black', strokeWidth: 7 }} />
 </BarChart>
 
+  
+
         </div>
     );
 };
