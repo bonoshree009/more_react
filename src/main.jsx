@@ -1,12 +1,16 @@
-import { StrictMode } from 'react'
+import { Component, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Pages from './componenets/Pages.jsx'
-//import Root from './componenets/root/Root.jsx';
+import Root from './componenets/root/Root.jsx';
 import Home from './componenets/Home.jsx'
+import About from './componenets/About.jsx';
+import Contact from './componenets/Contact.jsx';
+import Users from './componenets/Users.jsx';
+import UserDetails from './componenets/UserDetails.jsx';
 
 
 
@@ -24,14 +28,24 @@ import Home from './componenets/Home.jsx'
     path : "App",
     Component : App
   },
-  // {
-  //   path : '/',
-  //   Component : Root ,
-  //   children :[
-  //       { index :true , Component : Home },
-  //       {path : 'Pages' , Component: Pages }
-  //   ]
-  // }
+  {
+    path : '/',
+    Component : Root ,
+    children :[
+        { index :true , Component : Home },
+        {path : 'Pages' , Component: Pages },
+        {path : 'contact', Component : Contact },
+        {path : 'users' ,
+          loader : () => fetch ('https://jsonplaceholder.typicode.com/users'),
+          Component : Users
+        },
+        {
+        path : 'Users/:UserId',
+        loader : ({params})=> fetch(`https://jsonplaceholder.typicode.com/users/${params.UserId}`),
+        Component: UserDetails
+        }
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

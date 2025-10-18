@@ -1,18 +1,17 @@
-// import React from 'react';
-// import { Link } from 'react-router';
+import React from 'react';
+import { Link, Outlet } from 'react-router';
+import Header from '../Header';
+import Footer from '../Footer';
 
-// const Root = () => {
-//     return (
-//         <div>
-//             <h1>this is header</h1>
-//            <nav>
-//              {/* <a href='../Home.jsx'>Home</a> */}
-//              <Link to ="../Home.jsx"> home</Link>
-//               <Link to ="../About.jsx"> About</Link>
-//                <Link to ="../Pages.jsx"> pages</Link>
-//              </nav>
-//         </div>
-//     );
-// };
+const Root = () => {
+    return (
+        <div>
+            <Header></Header>
+            <Outlet></Outlet>
+            <Footer></Footer>
+            
+        </div>
+    );
+};
 
-// export default Root;
+export default Root;
